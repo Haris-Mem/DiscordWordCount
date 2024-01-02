@@ -1,2 +1,3 @@
-data
+data/data.json
 config.json
+node_modules
