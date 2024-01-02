@@ -25,5 +25,8 @@
 
 `searchBamf`: the word to search for. In lower case as the whole message will be converted to lower case for matching. Currently it is flagged to look for one instance, but for scalability, the variable naming can be modified
 
+`sighting`: And extra command which displays a random message in the array, can be removed
+
+
 ## data/data.json
 The bot process needs permissions to write to that file.
