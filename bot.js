@@ -4,6 +4,7 @@ const fs = require("fs");
 
 //Load configuration
 const { prefix, token, searchBamf } = require('./config.json');
+const { ActivityTypes } = require('discord.js');
 let regex = new RegExp("\\b" + searchBamf.join('|') + "\\b", 'i');
 
 //Load data
@@ -20,30 +21,35 @@ client.once("disconnect", () =>{
     console.log("Disconnect!");
 })
 
+
+
 client.on("ready", () => {
     console.log("Ready!");
-    client.user.setStatus('available')
-    client.user.setPresence({
-        game: {
-            name: 'Buffalo Chicken Sandwhich w/ a side of poutine',
-            type: "PLAYING"
-        },
-        status: 'online'
-    })
-})
+    client.user.setStatus('available');
+    client.user.setActivity('Buffalo Chicken Sandwich w/ a side of poutine', { type: 'PLAYING' });
+ });
+ 
+
 
 client.on("message", async message => {
     if (message.author.bot) return;
     
     if(regex.test(message.content.toLowerCase()) && !message.content.startsWith('!userbamfcount') && !message.content.startsWith('!bamfcount')){
-    const username = message.author.username;
-    if (!data.users[username]) {
-        data.users[username] = 0;
-    }
-    data.users[username] += 1;
-    data.count += 1;
-    var writestring = JSON.stringify(data);
-    fs.writeFileSync("data/data.json", writestring);
+        const username = message.author.username;
+        if (!data.users[username]) {
+            data.users[username] = 0;
+        }
+        data.users[username] += 1;
+        data.count += 1;
+        var writestring = JSON.stringify(data);
+        fs.writeFile("data/data.json", writestring, err => {
+            if (err) throw err;
+        });
+
+        if (data.count %25 == 0){
+            message.channel.send('https://cdn.discordapp.com/attachments/1182613059282403468/1191834912601424083/image.png?ex=65a6e1c2&is=65946cc2&hm=15f0ffa07a58145a81d99c9b4143c15205488b1e074c6a51518da02808414f73&');
+        }
+
     }
     
     if (message.content.startsWith('!bamfcount')) {

@@ -23,6 +23,7 @@
   "homepage": "https://github.com/Der-Kai-T/wordcounter#readme",
   "dependencies": {
     "discord.js": "^12.3.1",
-    "fs": "0.0.1-security"
+    "fs": "0.0.1-security",
+    "prettier": "^3.1.1"
   }
 }
