@@ -1,7 +1,6 @@
 # wordcounter-bot
- A Discord-Bot to count a word
- Requested by u/AlessyoOnWiiSports on r/discordapp on [reddit](https://www.reddit.com/r/discordapp/comments/indsmo/is_there_a_bot_that_can_count_how_many_times_we/?utm_source=share&utm_medium=web2x&context=3). It's written with node.js as a framework.
-
+ Written with node.js as a framework.
+ 
  ## Installation (short)
 1. Install [node.js](https://nodejs.org/) on your System
 2. Download or Clone the content of this repository.
@@ -13,9 +12,10 @@
 ```
 {
     "prefix": "?",
-    "token": "",
-    "search": "hi"
-}
+    "token": "YOUR_TOKEN_HERE",
+    "searchBamf": ["test"],
+    "sighting": ["test","test2"]
+   }
      
 ```
 
@@ -23,7 +23,7 @@
 
 `token` is used to authenticate the bot agains discord. To create one, you need a discord developer account. Visit https://discord.com/developers/ to get one. You can find a tutorial to create a discord application [here](https://discordpy.readthedocs.io/en/latest/discord.html). It's for use with thy python-Library but as its only the discord-part, it's the same for this bot. The only permissions the bot currently needs are `Send Messages` and `Manage Messages`.
 
-`search`: the word to search for. In lower case as the whole message will be converted to lower case for matching.
+`searchBamf`: the word to search for. In lower case as the whole message will be converted to lower case for matching. Currently it is flagged to look for one instance, but for scalability, the variable naming can be modified
 
 ## data/data.json
 The bot process needs permissions to write to that file.
